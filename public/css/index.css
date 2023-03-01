@@ -47,6 +47,17 @@ main {
   width: 90%;
 }
 
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-container div{
+  display: flex;
+  align-items: center;
+}
+
 .user-container {
   display: flex;
   justify-content: end;
@@ -81,11 +92,15 @@ main {
   background-size: cover;
 }
 
-#player-score {
-  position: absolute;
+#upper-player-score {
   font-size: 25px;
-  font-weight: 600;
   color: #c44b00;
+}
+
+#player-score {
+  font-size: 47px;
+  font-weight: 600;
+  color: white;
 }
 
 .game-question-container {

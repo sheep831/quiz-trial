@@ -28,18 +28,34 @@
         </div>
       </div>
       <!--Start of Up bar above the question container -->
-      <!-- <div class="game-details-container">
-        <h1>Score : <span id="player-score"></span> / 4</h1>
-        <h1>Question : <span id="question-number"></span> / 4</h1>
-      </div> -->
-            <div class="game-details-container">
-              <div class="user-container">
-                <div class="user-info-container"></div>
-                <div class="player-score-container"><span id="player-score"></span></div>
-              </div>
-              <div class="score-container"></div>
+      <div class="game-details-container">
+        <div class="user-container">
+          <div class="user-info-container"></div>
+          <div class="player-score-container">
+            <span id="upper-player-score"></span>
+          </div>
+        </div>
+        <div class="score-container">
+          <div class="left-topbar">
+            <div>
+              <img src="assets/orange-circle.png" height="80px" weight="80px" />
+              <span></span>
             </div>
-            <!--End of Up bar above the question container -->
+            <img
+              src="assets/single-star.png"
+              alt=""
+              height="45px"
+              weight="45px"
+              style="margin-right: 10px"
+            />
+            <span id="player-score"></span>
+          </div>
+          <div class="right-topbar">
+            <img src="assets/timer.png" height="40px" weight="150px" />
+          </div>
+        </div>
+      </div>
+      <!--End of Up bar above the question container -->
 
       <div class="game-question-container">
         <h1 id="display-question"></h1>
@@ -57,7 +73,7 @@
           </div>
         </div>
 
-<!-- Start of Option A - D -->
+        <!-- Start of Option A - D -->
         <span>
           <input
             type="radio"
@@ -132,7 +148,7 @@
               weight="50px"
             /><span class="total-question-no"></span>
           </div>
-          <img src="assets/hints.png" alt="hints" height="50px" weight="150px" />
+          <img src="assets/hints.png" height="50px" weight="150px" />
         </div>
         <div class="next-button-container">
           <button onclick="handleNextQuestion()"></button>

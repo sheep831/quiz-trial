@@ -95,7 +95,12 @@ function NextQuestion(index) {
 
   //set game details
   document.querySelector(".question-no").innerHTML = questionNumber;
-  document.getElementById("player-score").innerHTML = playerScore;
+  document.getElementById("player-score").innerHTML =
+    /*HTML*/
+    `
+  <span> <span style="font-size: 30px;">x</span> ${playerScore}</span>
+  `;
+
   document.getElementById("display-question").innerHTML =
     currentQuestion.question;
 
@@ -125,12 +130,8 @@ function NextQuestion(index) {
       imageStyles[i].style.background = `url("${
         currentQuestion[`image${arr[i]}`]
       }")`;
-
-      console.log(imageStyles[i].style.background);
-      console.log(currentQuestion[`image${arr[i]}`]);
       imageStyles[i].innerText = "";
       imageStyles[i].style.height = "90px";
-      console.log(imageStyles[i].style.height);
       imageStyles[i].style.width = "120px";
       imageStyles[i].style.backgroundSize = "contain";
       imageStyles[i].style.backgroundRepeat = "no-repeat";
@@ -193,11 +194,11 @@ function handleNextQuestion() {
   //delays next question displaying for a second
   setTimeout(() => {
     if (indexNumber <= 3) {
+      resetOptionBackground();
       NextQuestion(indexNumber);
     } else {
       handleEndGame();
     }
-    resetOptionBackground();
   }, 1000);
 }
 
