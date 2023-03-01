@@ -27,11 +27,19 @@
           </div>
         </div>
       </div>
-
-      <div class="game-details-container">
+      <!--Start of Up bar above the question container -->
+      <!-- <div class="game-details-container">
         <h1>Score : <span id="player-score"></span> / 4</h1>
         <h1>Question : <span id="question-number"></span> / 4</h1>
-      </div>
+      </div> -->
+            <div class="game-details-container">
+              <div class="user-container">
+                <div class="user-info-container"></div>
+                <div class="player-score-container"><span id="player-score"></span></div>
+              </div>
+              <div class="score-container"></div>
+            </div>
+            <!--End of Up bar above the question container -->
 
       <div class="game-question-container">
         <h1 id="display-question"></h1>
@@ -49,6 +57,7 @@
           </div>
         </div>
 
+<!-- Start of Option A - D -->
         <span>
           <input
             type="radio"
@@ -101,10 +110,35 @@
           ></label>
         </span>
       </div>
+      <!-- End of Option A - D -->
 
-      <div class="next-button-container">
-        <button onclick="handleNextQuestion()">Next Question</button>
+      <!-- Start of the bottom foot bar -->
+      <div class="foot-bar">
+        <div class="left-buttons-container">
+          <div class="current-question">
+            <img
+              src="assets/question-circle.png"
+              alt=""
+              height="50px"
+              weight="50px"
+            /><span class="question-no"></span>
+          </div>
+          <img src="assets/of.png" alt="" height="40px" weight="40px" />
+          <div class="total-question">
+            <img
+              src="assets/question-circle.png"
+              alt=""
+              height="50px"
+              weight="50px"
+            /><span class="total-question-no"></span>
+          </div>
+          <img src="assets/hints.png" alt="hints" height="50px" weight="150px" />
+        </div>
+        <div class="next-button-container">
+          <button onclick="handleNextQuestion()"></button>
+        </div>
       </div>
+      <!-- End of the bottom foot bar -->
     </main>
     <script src="https://pixijs.download/release/pixi.js"></script>
     <script src="js/quiz.js"></script>

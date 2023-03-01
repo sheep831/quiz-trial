@@ -1,3 +1,11 @@
+const user = [
+  {
+    name: "Kelvin",
+    surname: "Wong",
+    SID: 500314,
+  },
+];
+
 const questions = [
   {
     question: "以下哪種生物生活在圖中的環境?",
@@ -40,7 +48,7 @@ const questions = [
 let shuffledQuestions = []; //empty array to hold shuffled selected questions
 
 function handleQuestions() {
-  //function to shuffle and push 10 questions to shuffledQuestions array
+  //function to shuffle and push questions to shuffledQuestions array
   while (shuffledQuestions.length <= 3) {
     const random = questions[Math.floor(Math.random() * questions.length)];
     if (!shuffledQuestions.includes(random)) {
@@ -49,10 +57,22 @@ function handleQuestions() {
   }
 }
 
+(function loadUserDetails() {
+  // load user details to dom
+  document.querySelector(".user-info-container").innerHTML =
+    /*HTML*/
+    `
+  <span>${user[0].name} ${user[0].surname}</span><br>
+  <span>(${user[0].SID})</span>
+  `;
+})();
+
 let questionNumber = 1;
 let playerScore = 0;
 let wrongAttempt = 0;
 let indexNumber = 0;
+
+document.querySelector(".total-question-no").innerHTML = questions.length;
 
 // function for displaying next question in the array to dom
 function NextQuestion(index) {
@@ -74,7 +94,7 @@ function NextQuestion(index) {
   }
 
   //set game details
-  document.getElementById("question-number").innerHTML = questionNumber;
+  document.querySelector(".question-no").innerHTML = questionNumber;
   document.getElementById("player-score").innerHTML = playerScore;
   document.getElementById("display-question").innerHTML =
     currentQuestion.question;
@@ -102,14 +122,15 @@ function NextQuestion(index) {
       ".game-options-container span label"
     );
     for (let i = 0; i < imageStyles.length; i++) {
-      console.log(
-        currentQuestion[imageStyles[i].style.background]
-      );
       imageStyles[i].style.background = `url("${
         currentQuestion[`image${arr[i]}`]
       }")`;
+
+      console.log(imageStyles[i].style.background);
+      console.log(currentQuestion[`image${arr[i]}`]);
       imageStyles[i].innerText = "";
       imageStyles[i].style.height = "90px";
+      console.log(imageStyles[i].style.height);
       imageStyles[i].style.width = "120px";
       imageStyles[i].style.backgroundSize = "contain";
       imageStyles[i].style.backgroundRepeat = "no-repeat";
