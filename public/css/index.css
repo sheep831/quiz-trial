@@ -53,7 +53,7 @@ main {
   align-items: center;
 }
 
-.score-container div{
+.score-container div {
   display: flex;
   align-items: center;
 }
@@ -166,8 +166,9 @@ input[type="radio"] {
   display: none;
 }
 
+
 input[type="radio"]:checked ~ .option {
-  background: paleturquoise;
+  background-color: paleturquoise;
 }
 
 .foot-bar {

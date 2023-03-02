@@ -56,6 +56,23 @@ function handleQuestions() {
     }
   }
 }
+let radios = document.querySelectorAll("input[type=radio]");
+for (let i = 0; i < radios.length; i++) {
+  radios[i].addEventListener("click", function () {
+    if (this.checked) {
+      let id = this.id;
+      let span = document.getElementById(id + "-span");
+      span.style.backgroundColor = "paleturquoise";
+
+      for (let j = 0; j < radios.length; j++) {
+        if (radios[j].id != id) {
+          let span = document.getElementById(radios[j].id + "-span");
+          span.style.backgroundColor = "white";
+        }
+      }
+    }
+  });
+}
 
 (function loadUserDetails() {
   // load user details to dom
@@ -166,8 +183,8 @@ function checkForAnswer() {
   //checking if checked radio button is same as answer
   options.forEach((option) => {
     if (option.checked === true && option.value === currentQuestionAnswer) {
-      document.getElementById(correctOption).style.backgroundColor = "green";
-      playerScore++;
+      let span = correctOption.slice(0, -5) + "span";
+      document.getElementById(span).style.backgroundColor = "green";playerScore++;
       indexNumber++;
       //set to delay question number till when next question loads
       setTimeout(() => {
@@ -175,8 +192,11 @@ function checkForAnswer() {
       }, 1000);
     } else if (option.checked && option.value !== currentQuestionAnswer) {
       const wrongLabelId = option.labels[0].id;
-      document.getElementById(wrongLabelId).style.backgroundColor = "red";
-      document.getElementById(correctOption).style.backgroundColor = "green";
+      let wrongSpan = wrongLabelId.slice(0, -5) + "span";
+      let correctSpan = correctOption.slice(0, -5) + "span";
+
+      document.getElementById(wrongSpan).style.backgroundColor = "red";
+      document.getElementById(correctSpan).style.backgroundColor = "green";
       wrongAttempt++;
       indexNumber++;
       //set to delay question number till when next question loads
@@ -217,6 +237,12 @@ function unCheckRadioButtons() {
   const options = document.getElementsByName("option");
   for (let i = 0; i < options.length; i++) {
     options[i].checked = false;
+  }
+  let spans = document.querySelectorAll(".game-options-container span");
+  for (const span of spans) {
+    setTimeout(() => {
+      span.style.backgroundColor = "white";
+    }, 1000);
   }
 }
 
