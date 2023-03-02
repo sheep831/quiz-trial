@@ -15,6 +15,7 @@ const questions = [
     imageD: "http://localhost:8000/assets/D.png",
     correctOption: "optionD",
     image: "http://localhost:8000/assets/wood.png",
+    hint: "Hint: No hints",
   },
 
   {
@@ -24,6 +25,7 @@ const questions = [
     optionC: "9 players",
     optionD: "12 players",
     correctOption: "optionB",
+    hint: "Hint: 11 players are allowed on a soccer pitch."
   },
 
   {
@@ -33,6 +35,7 @@ const questions = [
     optionC: "Abraham Lincoln",
     optionD: "George Washington",
     correctOption: "optionD",
+    hint: "Hint: George Washington was the first President of USA."
   },
 
   {
@@ -42,10 +45,44 @@ const questions = [
     optionC: "June",
     optionD: "August",
     correctOption: "optionC",
+    hint: "Hint: No hints"
   },
 ];
 
+let quizTime = 0.1; // Countdown time in minutes, should be questions.time?
+let intervalId;
+let remainingTime = quizTime * 60 * 1000;
+
 let shuffledQuestions = []; //empty array to hold shuffled selected questions
+
+document.querySelector(".total-timer-container").innerHTML =
+  formatTime(remainingTime);
+
+(function startTimer() {
+  intervalId = setInterval(updateTimer, 1000);
+})();
+
+function updateTimer() {
+  remainingTime -= 1000;
+  if (remainingTime <= 0) {
+    clearInterval(intervalId);
+    document.querySelector(".total-timer-container").innerHTML = "Time's up!";
+  } else {
+    document.querySelector(".total-timer-container").innerHTML =
+      formatTime(remainingTime);
+  }
+}
+
+function formatTime(milliseconds) {
+  let totalSeconds = Math.ceil(milliseconds / 1000);
+  let minutes = Math.floor(totalSeconds / 60);
+  let seconds = totalSeconds % 60;
+  return (
+    (minutes < 10 ? "0" + minutes : minutes) +
+    ":" +
+    (seconds < 10 ? "0" + seconds : seconds)
+  );
+}
 
 function handleQuestions() {
   //function to shuffle and push questions to shuffledQuestions array
@@ -184,7 +221,8 @@ function checkForAnswer() {
   options.forEach((option) => {
     if (option.checked === true && option.value === currentQuestionAnswer) {
       let span = correctOption.slice(0, -5) + "span";
-      document.getElementById(span).style.backgroundColor = "green";playerScore++;
+      document.getElementById(span).style.backgroundColor = "green";
+      playerScore++;
       indexNumber++;
       //set to delay question number till when next question loads
       setTimeout(() => {

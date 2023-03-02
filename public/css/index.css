@@ -43,6 +43,12 @@ main {
   border-radius: 30px;
 }
 
+.total-timer-container {
+  color: white;
+  font-size: 45px;
+  margin-left: 15px;
+}
+
 .game-details-container {
   width: 90%;
 }
