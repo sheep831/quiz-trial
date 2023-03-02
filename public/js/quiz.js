@@ -1,3 +1,6 @@
+// -------------------------------------------------------------------------------------------------------------------
+// Data from DB
+// -------------------------------------------------------------------------------------------------------------------
 const user = [
   {
     name: "Kelvin",
@@ -15,7 +18,7 @@ const questions = [
     imageD: "http://localhost:8000/assets/D.png",
     correctOption: "optionD",
     image: "http://localhost:8000/assets/wood.png",
-    hint: "Hint: No hints",
+    hint: "No hints",
   },
 
   {
@@ -25,7 +28,7 @@ const questions = [
     optionC: "9 players",
     optionD: "12 players",
     correctOption: "optionB",
-    hint: "Hint: 11 players are allowed on a soccer pitch."
+    hint: "11 players are allowed on a soccer pitch.",
   },
 
   {
@@ -35,7 +38,7 @@ const questions = [
     optionC: "Abraham Lincoln",
     optionD: "George Washington",
     correctOption: "optionD",
-    hint: "Hint: George Washington was the first President of USA."
+    hint: "George Washington was the first President of USA.",
   },
 
   {
@@ -45,15 +48,16 @@ const questions = [
     optionC: "June",
     optionD: "August",
     correctOption: "optionC",
-    hint: "Hint: No hints"
+    hint: "No hints",
   },
 ];
 
+// -------------------------------------------------------------------------------------------------------------------
+// Timer
+// -------------------------------------------------------------------------------------------------------------------
 let quizTime = 0.1; // Countdown time in minutes, should be questions.time?
 let intervalId;
 let remainingTime = quizTime * 60 * 1000;
-
-let shuffledQuestions = []; //empty array to hold shuffled selected questions
 
 document.querySelector(".total-timer-container").innerHTML =
   formatTime(remainingTime);
@@ -84,6 +88,23 @@ function formatTime(milliseconds) {
   );
 }
 
+// -------------------------------------------------------------------------------------------------------------------
+// Hint Modal
+// -------------------------------------------------------------------------------------------------------------------
+
+function closeHintModal() {
+  //function to close hint modal
+  document.getElementById("hint-modal").style.display = "none";
+  document.querySelector(".game-details-container").style.filter = "";
+  document.querySelector(".game-question-container").style.filter = "";
+  document.querySelector(".game-options-container").style.filter = "";
+  document.querySelector(".foot-bar").style.filter = "";
+}
+// -------------------------------------------------------------------------------------------------------------------
+//
+// -------------------------------------------------------------------------------------------------------------------
+let shuffledQuestions = []; //empty array to hold shuffled selected questions
+
 function handleQuestions() {
   //function to shuffle and push questions to shuffledQuestions array
   while (shuffledQuestions.length <= 3) {
@@ -93,6 +114,8 @@ function handleQuestions() {
     }
   }
 }
+
+// checked option to be highlighted
 let radios = document.querySelectorAll("input[type=radio]");
 for (let i = 0; i < radios.length; i++) {
   radios[i].addEventListener("click", function () {
@@ -133,6 +156,19 @@ function NextQuestion(index) {
   handleQuestions();
   const currentQuestion = shuffledQuestions[index];
   document.getElementById("question-img").style = "";
+
+  //function to open hint modal
+  document.querySelector(".hint-btn").addEventListener("click", function () {
+    document.querySelector(".hint-detail").innerHTML = currentQuestion.hint;
+    document.getElementById("hint-modal").style.display = "flex";
+    document.querySelector(".game-details-container").style.filter =
+      "blur(5px)";
+    document.querySelector(".game-question-container").style.filter =
+      "blur(5px)";
+    document.querySelector(".game-options-container").style.filter =
+      "blur(5px)";
+    document.querySelector(".foot-bar").style.filter = "blur(5px)";
+  });
 
   if (currentQuestion.image) {
     // if there is question image
