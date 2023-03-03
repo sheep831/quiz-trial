@@ -237,13 +237,33 @@ function handleEndGame() {
   }
   const playerGrade = (playerScore / 10) * 100;
 
+  //hide the questions and options (jim)
+  document.getElementById("user-score").innerHTML = playerScore;
+  document.getElementsByClassName("modal-content-container")[0].style.height =
+    "35rem";
+  document.getElementsByClassName("modal-content-container")[0].style.width =
+    "35rem";
+  document.getElementsByClassName("game-question-container")[0].style.display =
+    "none";
+  document.getElementsByClassName("game-options-container")[0].style.display =
+    "none";
+  // document.getElementsByClassName("game-details-container")[0].style.display =
+  //   "none";
+  document.getElementsByClassName("foot-bar")[0].style.display = "none";
+
+  document.getElementsByClassName(
+    "modal-content-container"
+  )[0].style.backgroundColor = "rgb(0, 0, 0,0)";
   //data to display to score board
-  document.getElementById("remarks").innerHTML = remark;
-  document.getElementById("remarks").style.color = remarkColor;
-  document.getElementById("grade-percentage").innerHTML = playerGrade;
-  document.getElementById("wrong-answers").innerHTML = wrongAttempt;
-  document.getElementById("right-answers").innerHTML = playerScore;
+  // document.getElementById("remarks").innerHTML = remark;
+  // document.getElementById("remarks").style.color = remarkColor;
+  // document.getElementById("grade-percentage").innerHTML = playerGrade;
+  // document.getElementById("wrong-answers").innerHTML = wrongAttempt;
+  // document.getElementById("right-answers").innerHTML = playerScore;
   document.getElementById("score-modal").style.display = "flex";
+
+  //game-question-container
+  //game-options-container
 }
 
 //closes score modal and resets game
@@ -254,6 +274,19 @@ function closeScoreModal() {
   indexNumber = 0;
   shuffledQuestions = [];
   NextQuestion(indexNumber);
+
+  //by jim
+  document.getElementsByClassName("game-question-container")[0].style.display =
+    "flex";
+  document.getElementsByClassName("game-options-container")[0].style.display =
+    "flex";
+  document.getElementsByClassName("game-details-container")[0].style.display =
+    "block";
+  document.getElementsByClassName("modal-content-container")[0].style.height =
+    "9rem";
+  document.getElementsByClassName("modal-content-container")[0].style.width =
+    "25rem";
+  document.getElementsByClassName("foot-bar")[0].style.display = "flex";
   document.getElementById("score-modal").style.display = "none";
 }
 

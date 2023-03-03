@@ -45,6 +45,9 @@ main {
 
 .game-details-container {
   width: 90%;
+  top: 35px;
+  position: fixed;
+  z-index: 2;
 }
 
 .user-container {
@@ -189,6 +192,7 @@ input[type="radio"]:checked ~ .option {
   display: flex;
   justify-content: end;
 }
+
 .next-button-container button {
   width: 50%;
   height: 50px;
@@ -224,6 +228,9 @@ input[type="radio"]:checked ~ .option {
 }
 
 .modal-content-container {
+  /* height: 9rem;
+  width: 25rem; */
+  position: relative;
   height: 9rem;
   width: 25rem;
   background-color: rgb(43, 42, 42);
@@ -242,12 +249,22 @@ input[type="radio"]:checked ~ .option {
 }
 
 .grade-details {
-  width: 15rem;
-  height: 10rem;
+  position: absolute;
+  top: 50px;
+  left: -23px;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 27rem;
+  height: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  border: 12px solid #eeba53;
+  border-radius: 15px;
+  background-color: #fff8e8;
+  color: black;
+  justify-content: end;
 }
 
 .grade-details p {
@@ -256,11 +273,13 @@ input[type="radio"]:checked ~ .option {
 }
 
 .modal-button-container {
+  position: relative;
   height: 2rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .modal-button-container button {
@@ -388,3 +407,151 @@ input[type="radio"]:checked ~ .option {
     opacity: 1;
   }
 }
+
+/* final page */
+
+#result-container {
+  position: relative;
+  display: flex;
+  height: 20rem;
+  flex-direction: column;
+}
+
+#result-frame {
+  position: relative;
+  display: flex;
+  /* background: url("../assets/frame.png"); */
+  height: 5rem;
+  min-width: 24.5rem;
+  background-color: #fbc233;
+  border: 10px solid #f28c09;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto; */
+  /* border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; */
+  object-fit: cover;
+  background-repeat: no-repeat;
+}
+
+#result-text {
+  display: block;
+  color: #c44b01;
+  font-weight: bold;
+  font-size: 4rem;
+  text-shadow: 1px 1px black;
+}
+
+.score-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.single-star {
+  width: 5rem;
+  height: 5rem;
+  margin-right: 5px;
+}
+
+.grade-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 15rem;
+  margin-bottom: 1.5rem;
+}
+
+.score-text {
+  color: #c44b01;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+#user-score {
+  color: #c44b01;
+  font-size: 4.5rem;
+  font-weight: bold;
+}
+
+#score-x {
+  color: #c44b01;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.timer-container {
+  width: 90%;
+  height: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.timer-text {
+  display: block;
+  color: #404040;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.timer-content {
+  display: flex;
+  justify-content: center;
+  width: 7rem;
+}
+
+#timer-logo {
+  align-self: center;
+  margin-right: 5px;
+}
+
+#timer-time {
+  color: #404040;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.modal-button-box {
+  width: 90%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-button-img {
+  width: 80%;
+  height: 80px;
+  background: url("../assets/continue.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+  border: none;
+}
+
+/* .next-button-container button {
+  width: 50%;
+  height: 50px;
+  background: url("../assets/continue.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+  border: none;
+}
+.next-button-container button:hover {
+  -ms-transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+} */

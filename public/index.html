@@ -8,22 +8,42 @@
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body onload="NextQuestion(0)">
+    
     <main>
-      <!-- creating a modal for when quiz ends -->
+      <!-- creating a modal for when   quiz ends -->
       <div class="modal-container" id="score-modal">
         <div class="modal-content-container">
-          <h1>Congratulations, Quiz Completed.</h1>
-
-          <div class="grade-details">
-            <p>Attempts : 10</p>
-            <p>Wrong Answers : <span id="wrong-answers"></span></p>
-            <p>Right Answers : <span id="right-answers"></span></p>
-            <p>Grade : <span id="grade-percentage"></span>%</p>
-            <p><span id="remarks"></span></p>
+          <div id="result-container">
+            <div id="result-frame">
+              <span id="result-text">RESULT</span>
+            </div>
+            <div class="grade-details">
+              <div class="grade-content">
+                <div class="score-text">Total Score</div>
+                <div class="score-container">
+                  <img
+                    class="single-star"
+                    src="./assets/star.png"
+                    alt="single-star"
+                  />
+                  <p id="score-x">x</p>
+                  <p id="user-score"></p>
+                </div>
+              </div>
+              <div class="timer-container">
+                <span class="timer-text">Total Time</span class="timer-text">
+                <div class="timer-content">
+                  <img id="timer-logo" src="./assets/time.png" alt="timer" />
+                  <span id="timer-time">3:28</span>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div class="modal-button-container">
+          <!-- <div class="modal-button-container">
             <button onclick="closeScoreModal()">Continue</button>
+          </div> -->
+          <div class="modal-button-box">
+            <button class="modal-button-img" onclick="closeScoreModal()"></button>
           </div>
         </div>
       </div>
@@ -32,14 +52,16 @@
         <h1>Score : <span id="player-score"></span> / 4</h1>
         <h1>Question : <span id="question-number"></span> / 4</h1>
       </div> -->
-            <div class="game-details-container">
-              <div class="user-container">
-                <div class="user-info-container"></div>
-                <div class="player-score-container"><span id="player-score"></span></div>
-              </div>
-              <div class="score-container"></div>
-            </div>
-            <!--End of Up bar above the question container -->
+      <div class="game-details-container">
+        <div class="user-container">
+          <div class="user-info-container"></div>
+          <div class="player-score-container">
+            <span id="player-score"></span>
+          </div>
+        </div>
+        <div class="score-container"></div>
+      </div>
+      <!--End of Up bar above the question container -->
 
       <div class="game-question-container">
         <h1 id="display-question"></h1>
@@ -57,7 +79,7 @@
           </div>
         </div>
 
-<!-- Start of Option A - D -->
+        <!-- Start of Option A - D -->
         <span>
           <input
             type="radio"
@@ -132,7 +154,12 @@
               weight="50px"
             /><span class="total-question-no"></span>
           </div>
-          <img src="assets/hints.png" alt="hints" height="50px" weight="150px" />
+          <img
+            src="assets/hints.png"
+            alt="hints"
+            height="50px"
+            weight="150px"
+          />
         </div>
         <div class="next-button-container">
           <button onclick="handleNextQuestion()"></button>
